@@ -152,7 +152,10 @@
         <button class="button-2025 hidden" onclick="showMessage(event)">✨ 2025 ✨</button>
     </div>
 
-    <div id="message" class="message">Happy New Year! May this year be filled with endless joy, love, and success for you! 🎉❤️</div>
+    <div id="message" class="message">A new year starts, with you by my side,
+    Together, we'll face whatever comes with pride.
+    With every heartbeat, with every cheer,
+    I’m so lucky to spend another year with you, my dear.🎉❤️</div>
 
     <script>
         function toggleLetter() {
@@ -164,20 +167,20 @@
                 letterBox.classList.add('open');
                 setTimeout(() => {
                     button2025.classList.remove('hidden');
-                    button2025.style.display = 'block'; // Ensure button is visible
+                    button2025.style.display = 'block'; 
                 }, 500); // Delay to match the flap animation
             } else {
                 letterBox.classList.remove('open');
                 setTimeout(() => {
                     button2025.classList.add('hidden');
-                    button2025.style.display = 'none'; // Hide button
+                    button2025.style.display = 'none'; 
                 }, 500);
-                hideMessage(); // Hide the message when closing the letter
+                hideMessage(); 
             }
         }
 
         function showMessage(event) {
-            event.stopPropagation(); // Prevent click event from propagating to the letter
+            event.stopPropagation(); 
             const message = document.getElementById('message');
             message.classList.add('show');
             showBalloons();
@@ -191,17 +194,17 @@
         function createBalloon() {
             const balloon = document.createElement('div');
             balloon.className = 'balloon';
-            balloon.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            balloon.style.left = Math.random() * 100 + 'vw'; 
             document.body.appendChild(balloon);
 
             setTimeout(() => {
-                balloon.remove(); // Remove balloon after animation
+                balloon.remove();
             }, 5000);
         }
 
         function showBalloons() {
             for (let i = 0; i < 20; i++) {
-                setTimeout(createBalloon, i * 200); // Delay balloon creation for staggered effect
+                setTimeout(createBalloon, i * 200); 
             }
         }
     </script>
