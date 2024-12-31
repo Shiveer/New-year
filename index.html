@@ -18,6 +18,7 @@
             color: white;
             text-align: center;
             overflow: hidden;
+            padding: 20px; /* Added padding to prevent content from touching edges */
         }
 
         h1 {
@@ -34,7 +35,8 @@
 
         .letter-box {
             position: relative;
-            width: 220px;
+            width: 80%;
+            max-width: 220px;
             height: 160px;
             background: linear-gradient(145deg, #FF851B, #FF4136);
             border-radius: 15px;
@@ -60,7 +62,7 @@
             height: 0;
             border-left: 110px solid transparent;
             border-right: 110px solid transparent;
-            border-top: 75px solid #FF4136;  /* Flip the triangle to point upwards */
+            border-top: 75px solid #FF4136;
             transform-origin: top;
             transform: rotateX(0);
             transition: transform 0.7s ease-in-out;
@@ -68,7 +70,7 @@
         }
 
         .letter-box.open .flap {
-            transform: rotateX(180deg); /* Keep the flap open animation */
+            transform: rotateX(180deg);
         }
 
         .button-2025 {
@@ -105,8 +107,8 @@
 
         .balloon {
             position: absolute;
-            width: 50px;
-            height: 70px;
+            width: 40px;
+            height: 60px;
             background: radial-gradient(circle, #FF4136, #85144b);
             border-radius: 50%;
             animation: float 5s infinite ease-in-out;
@@ -138,8 +140,50 @@
             }
         }
 
-        .hidden {
-            display: none;
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            .letter-box {
+                width: 90%;
+                height: 120px;
+            }
+
+            .button-2025 {
+                font-size: 1.3em;
+                padding: 12px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .letter-box {
+                width: 90%;
+                height: 100px;
+            }
+
+            .balloon {
+                width: 30px;
+                height: 45px;
+            }
+
+            .button-2025 {
+                font-size: 1.2em;
+                padding: 12px 24px;
+            }
         }
     </style>
 </head>
@@ -167,20 +211,20 @@
                 letterBox.classList.add('open');
                 setTimeout(() => {
                     button2025.classList.remove('hidden');
-                    button2025.style.display = 'block'; // Ensure button is visible
-                }, 500); // Delay to match the flap animation
+                    button2025.style.display = 'block';
+                }, 500);
             } else {
                 letterBox.classList.remove('open');
                 setTimeout(() => {
                     button2025.classList.add('hidden');
-                    button2025.style.display = 'none'; // Hide button
+                    button2025.style.display = 'none';
                 }, 500);
-                hideMessage(); // Hide the message when closing the letter
+                hideMessage();
             }
         }
 
         function showMessage(event) {
-            event.stopPropagation(); // Prevent click event from propagating to the letter
+            event.stopPropagation();
             const message = document.getElementById('message');
             message.classList.add('show');
             showBalloons();
@@ -194,17 +238,17 @@
         function createBalloon() {
             const balloon = document.createElement('div');
             balloon.className = 'balloon';
-            balloon.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            balloon.style.left = Math.random() * 100 + 'vw';
             document.body.appendChild(balloon);
 
             setTimeout(() => {
-                balloon.remove(); // Remove balloon after animation
+                balloon.remove();
             }, 5000);
         }
 
         function showBalloons() {
             for (let i = 0; i < 20; i++) {
-                setTimeout(createBalloon, i * 200); // Delay balloon creation for staggered effect
+                setTimeout(createBalloon, i * 200);
             }
         }
     </script>
