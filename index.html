@@ -145,17 +145,17 @@
 </head>
 <body>
     <h1>Happy new yearrr merii punturuu ❤️❤️</h1>
-    <p>yo syaaano letter maa dabauu pukulu</p>
+    <p>Yo syaaano letter maa dabauu pukulu</p>
     
     <div class="letter-box" onclick="toggleLetter()">
         <div class="flap"></div>
         <button class="button-2025 hidden" onclick="showMessage(event)">✨ 2025 ✨</button>
     </div>
 
-    <div id="message" class="message">A new year starts, with you by my side,
-    Together, we'll face whatever comes with pride.
-    With every heartbeat, with every cheer,
-    I’m so lucky to spend another year with you, my dear.🎉❤️</div>
+    <div id="message" class="message"> A new year starts, with you by my side,<br>
+        Together, we'll face whatever comes with pride.<br>
+        With every heartbeat, with every cheer,<br>
+        I’m so lucky to spend another year with you, my dear.🎉❤️🎉❤️</div>
 
     <script>
         function toggleLetter() {
@@ -167,20 +167,20 @@
                 letterBox.classList.add('open');
                 setTimeout(() => {
                     button2025.classList.remove('hidden');
-                    button2025.style.display = 'block'; 
+                    button2025.style.display = 'block'; // Ensure button is visible
                 }, 500); // Delay to match the flap animation
             } else {
                 letterBox.classList.remove('open');
                 setTimeout(() => {
                     button2025.classList.add('hidden');
-                    button2025.style.display = 'none'; 
+                    button2025.style.display = 'none'; // Hide button
                 }, 500);
-                hideMessage(); 
+                hideMessage(); // Hide the message when closing the letter
             }
         }
 
         function showMessage(event) {
-            event.stopPropagation(); 
+            event.stopPropagation(); // Prevent click event from propagating to the letter
             const message = document.getElementById('message');
             message.classList.add('show');
             showBalloons();
@@ -194,17 +194,17 @@
         function createBalloon() {
             const balloon = document.createElement('div');
             balloon.className = 'balloon';
-            balloon.style.left = Math.random() * 100 + 'vw'; 
+            balloon.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
             document.body.appendChild(balloon);
 
             setTimeout(() => {
-                balloon.remove();
+                balloon.remove(); // Remove balloon after animation
             }, 5000);
         }
 
         function showBalloons() {
             for (let i = 0; i < 20; i++) {
-                setTimeout(createBalloon, i * 200); 
+                setTimeout(createBalloon, i * 200); // Delay balloon creation for staggered effect
             }
         }
     </script>
